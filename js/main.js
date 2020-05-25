@@ -162,14 +162,23 @@ $(document).ready(function() {
 				function iterate(item) {
 					console.log(item);
 					let li = document.createElement("li");
+					let btn = document.createElement("button");
+					let anchor = document.createElement("a");
+
 					li.textContent = item.name + "\u00A0" + "\u00A0" + item.price;
+					btn.textContent = "More";
 					li.setAttribute(
 						"class",
 						"list-group-item d-flex justify-content-between"
 					);
 					li.setAttribute("data-lat", item.latitude);
 					li.setAttribute("data-long", item.longitude);
+					btn.setAttribute("class", "btn btn-primary");
+					anchor.href = "hotelinfo.html?hotelID=" + item.location_id + "";
+
 					document.getElementById("hotelInfo").appendChild(li);
+					li.appendChild(anchor);
+					anchor.appendChild(btn);
 					longHotel = item.longitude;
 					latHotel = item.latitude;
 				}

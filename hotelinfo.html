@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Holiday Generator</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- bootstrap end -->
+    <!-- slick slider css -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <!-- slick slider css end -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <!-- mapbox -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" rel="stylesheet" />
+
+
+</head>
+
+<body class="m-0 p-0">
+<h1 class="text-center bg-primary jumbotron text-white" id="hotelName"></h1>
+
+<div class="container">
+        <div class="card"">
+                <img src="" class="hotelImg card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title hotelTitle"></h5>
+                  <h6 class="card-title hotelContact"></h6>
+                  <p class="card-text hotelDesc"></p>
+                  <h5 class="text-center bg-primary text-white m-0">Ammenities</h5>
+                    <div class="row hotelAmmenities" id="hotelAmmenities">
+
+                     </div>
+                     <div class="offersWrapper text-center">
+                         <!-- slick slider for offers -->
+                            <div class="offersSlider mx-auto" id="offersSlider">
+                                    
+                                    <!-- <p>hello</p> -->
+                             </div>
+
+                             <!-- slick slider for offers end -->
+                     </div>
+                     <h5 class="text-center mt-3 bg-primary text-white m-0">Location</h5>
+                     <div class="hotelSingleLocation" id="hotelSingleLocation">
+
+                     </div>
+                  <a  href="" class=" mt-3 w-100 btn btn-primary tripAdvisorBtn" id="tripAdvisorBtn">View on Trip Advisor</a>
+                </div>
+              </div>
+
+</div>
+    
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- slick js  -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- slick js end -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js"></script>
+<script src="js/hotel.js"></script>
+</body>
+
+</html>
