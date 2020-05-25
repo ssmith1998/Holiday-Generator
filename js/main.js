@@ -136,7 +136,7 @@ $(document).ready(function() {
 		var btnSiblings = $(this).siblings();
 		var price_select = btnSiblings[0].value;
 		var date_select = btnSiblings[1].value;
-		console.log(date_select);
+		console.log(price_select);
 		$.ajax({
 			type: "GET",
 			headers: {
@@ -146,7 +146,7 @@ $(document).ready(function() {
 			url:
 				"https://tripadvisor1.p.rapidapi.com/hotels/list?offset=0&pricesmax=" +
 				price_select +
-				"&currency=GBP&limit=15&order=asc&lang=en_US&sort=recommended&location_id=" +
+				"&currency=GBP&limit=15&order=desc&lang=en_US&sort=recommended&location_id=" +
 				locationID +
 				"&adults=1&checkin=" +
 				date_select +
