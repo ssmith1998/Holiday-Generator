@@ -83,7 +83,7 @@ $(document).ready(function() {
 			type: "GET",
 			headers: {
 				"x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-				"x-rapidapi-key": "81b4c0f1f7mshf5bed3bc95f067ep10c75djsnb52c651eb2a1"
+				"x-rapidapi-key": "ffab04686amsh3da0c0d6057b34ep1f81b3jsne6bbb0b4c85e"
 			},
 			url:
 				"https://tripadvisor1.p.rapidapi.com/locations/search?location_id=1&limit=30&sort=relevance&offset=0&lang=en_US&currency=GBP&units=km&query=" +
