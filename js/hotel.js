@@ -54,7 +54,8 @@ $(document).ready(function() {
 			var hotelLat = data.data[0].latitude;
 			var hotelURL = data.data[0].web_url;
 			console.log(hotelName + hotelAddress);
-			document.getElementById("hotelName").innerHTML = hotelName;
+			document.getElementById("hotelName").innerHTML =
+				"<i class='fas fa-hotel mr-1'></i>" + hotelName;
 			$(".hotelImg").attr("src", hotelImg);
 			var tripAdvisorBtn = document.getElementById("tripAdvisorBtn");
 			tripAdvisorBtn.href = hotelURL;
