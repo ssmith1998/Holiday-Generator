@@ -157,7 +157,9 @@ $(document).ready(function() {
 			beforeSend: function() {
 				$("#hotelInfo")
 					.empty()
-					.html("Loading...");
+					.html(
+						"<button class='alert alert-primary' role='alert'>Getting you some great hotels</button>"
+					);
 			},
 			success: function(data) {
 				$("#hotelInfo").empty();
@@ -166,22 +168,33 @@ $(document).ready(function() {
 					console.log(item);
 					let li = document.createElement("li");
 					let btn = document.createElement("button");
+					let btnLocation = document.createElement("button");
 					let anchor = document.createElement("a");
+					let btnWrapper = document.createElement("div");
+
 					hotelName = item.name;
+					btnLocation.textContent = "Map";
 					li.textContent = item.name + "\u00A0" + "\u00A0" + item.price;
 					btn.textContent = "More";
 					li.setAttribute(
 						"class",
 						"list-group-item d-flex justify-content-between"
 					);
-					li.setAttribute("data-lat", item.latitude);
-					li.setAttribute("data-long", item.longitude);
-					li.setAttribute("data-name", item.name);
-					btn.setAttribute("class", "btn btn-primary");
+					btnLocation.setAttribute("data-lat", item.latitude);
+					btnLocation.setAttribute("data-long", item.longitude);
+					btnLocation.setAttribute("data-name", item.name);
+					btnLocation.setAttribute(
+						"class",
+						"btn btn-success w-100 mr-2 locationBtn"
+					);
+					btn.setAttribute("class", "btn btn-primary w-100");
 					anchor.href = "hotelinfo.html?hotelID=" + item.location_id + "";
+					btnWrapper.setAttribute("class", "d-flex flex-column flex-sm-row");
 
 					document.getElementById("hotelInfo").appendChild(li);
-					li.appendChild(anchor);
+					li.appendChild(btnWrapper);
+					btnWrapper.appendChild(btnLocation);
+					btnWrapper.appendChild(anchor);
 					anchor.appendChild(btn);
 					longHotel = item.longitude;
 					latHotel = item.latitude;
@@ -203,41 +216,28 @@ $(document).ready(function() {
 					////////////////////////// mapbox end//////////////////////
 				}
 				var loop = data.data.forEach(iterate);
-
-				// for (var i = 0; i < data.data.length; i++) {
-				// 	console.log(data);
-				// var longHotel;
-				// var latHotel;
-
-				// 	// console.log(data.data[i].name);
-				// 	// variables for hotels
-				// 	// var nameHotel = data.data[i].name;
-				// longHotel = data.data[i].longitude;
-				// latHotel = data.data[i].latitude;
-				// 	// console.log(nameHotel);
-				// 	// variables for hotels end
-				// 	// build page
-
-				// 	document.getElementById("hotelInfo").innerHTML = data.data[i].name;
-
-				// 	// build page end
-				// }
 			}
 		});
 	});
 });
 $("document").ready(function() {
-	$(document).on("click", ".list-group-item", function() {
-		var li = $(this)
+	$(document).on("click", ".locationBtn", function() {
+		$(".hotelMap").show();
+		var btn = $(this)
+			.parent()
+			.parent()
 			.siblings()
 			.css({
 				background: "#ffff",
 				color: "black"
 			});
-		$(this).css({
-			background: "#28a745",
-			color: "#ffff"
-		});
+		$(this)
+			.parent()
+			.parent()
+			.css({
+				background: "#28a745",
+				color: "#ffff"
+			});
 
 		$("html,body").animate(
 			{

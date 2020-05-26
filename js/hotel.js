@@ -42,6 +42,7 @@ $(document).ready(function() {
 			"https://tripadvisor1.p.rapidapi.com/hotels/get-details?adults=1&nights=2&currency=USD&lang=en_US&child_rm_ages=7%252C10&checkin=2020-08-15&location_id=" +
 			hotelID +
 			"",
+
 		success: function(data) {
 			console.log(data);
 			var hotelName = data.data[0].name;
