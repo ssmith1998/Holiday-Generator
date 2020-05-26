@@ -1,7 +1,9 @@
 $(document).ready(function() {
 	//////////////////// slick init//////////////////
 	$(".offersSlider").slick({
+		autoplay: true,
 		infinite: true,
+		pauseOnHover: true,
 		slidesToShow: 2,
 		responsive: [
 			{
