@@ -34,20 +34,24 @@
 
 .slick-prev::before {
 	color: black;
-	/* font-size: 44px; */
+	font-size: 44px;
 	z-index: 100;
 }
 
 .slick-next::before {
 	color: black;
-	/* font-size: 44px; */
+	font-size: 44px;
 	z-index: 100;
 }
 
 .slick-next {
 	/* right: 2px; */
+	height: 44px;
+	width: 44px;
 }
 
 .slick-prev {
 	/* right: 2px; */
+	height: 44px;
+	width: 44px;
 }
