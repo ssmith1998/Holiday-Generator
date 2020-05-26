@@ -119,7 +119,7 @@ $(document).ready(function() {
 				container: "hotelSingleLocation", // container id
 				style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
 				center: [hotelLong, hotelLat], // starting position [lng, lat]
-				zoom: 3 // starting zoom
+				zoom: 9 // starting zoom
 			});
 			var marker = new mapboxgl.Marker()
 				.setLngLat([hotelLong, hotelLat])

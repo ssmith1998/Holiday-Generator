@@ -57,3 +57,19 @@
 	width: 44px;
 	z-index: 100;
 }
+
+h1 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+}
+
+h6,
+a {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+}
+
+h5 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 400;
+}
