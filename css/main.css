@@ -41,3 +41,11 @@
 	color: black;
 	font-size: 44px;
 }
+
+.slick-next {
+	right: 2px;
+}
+
+.slick-prev {
+	right: 2px;
+}
