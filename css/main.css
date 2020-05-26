@@ -35,11 +35,13 @@
 .slick-prev::before {
 	color: black;
 	font-size: 44px;
+	z-index: 100;
 }
 
 .slick-next::before {
 	color: black;
 	font-size: 44px;
+	z-index: 100;
 }
 
 .slick-next {
