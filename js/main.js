@@ -33,8 +33,8 @@ $(document).ready(function() {
 			var name = data.data[0].result_object.name;
 			var locImage = data.data[0].result_object.photo.images.original.url;
 			var desc = data.data[0].result_object.geo_description;
-			var lat = data.data[0].result_object.latitude;
-			var long = data.data[0].result_object.longitude;
+			var latitudes = data.data[0].result_object.latitude;
+			var longitudes = data.data[0].result_object.longitude;
 			locationID = data.data[0].result_object.location_id;
 			// console.log(locationID);
 			// mapbox
@@ -43,10 +43,12 @@ $(document).ready(function() {
 			var map = new mapboxgl.Map({
 				container: "locationMap", // container id
 				style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
-				center: [long, lat], // starting position [lng, lat]
+				center: [longitudes, latitudes], // starting position [lng, latituded]
 				zoom: 3 // starting zoom
 			});
-			var marker = new mapboxgl.Marker().setLngLat([long, lat]).addTo(map);
+			var marker = new mapboxgl.Marker()
+				.setLngLat([longitudes, latitudes])
+				.addTo(map);
 			// mapbox end
 
 			// console.log(long);
@@ -137,6 +139,7 @@ $(document).ready(function() {
 		var price_select = btnSiblings[0].value;
 		var date_select = btnSiblings[1].value;
 		console.log(price_select);
+		var hotelName;
 		$.ajax({
 			type: "GET",
 			headers: {
@@ -164,7 +167,7 @@ $(document).ready(function() {
 					let li = document.createElement("li");
 					let btn = document.createElement("button");
 					let anchor = document.createElement("a");
-
+					hotelName = item.name;
 					li.textContent = item.name + "\u00A0" + "\u00A0" + item.price;
 					btn.textContent = "More";
 					li.setAttribute(
@@ -173,6 +176,7 @@ $(document).ready(function() {
 					);
 					li.setAttribute("data-lat", item.latitude);
 					li.setAttribute("data-long", item.longitude);
+					li.setAttribute("data-name", item.name);
 					btn.setAttribute("class", "btn btn-primary");
 					anchor.href = "hotelinfo.html?hotelID=" + item.location_id + "";
 
@@ -181,6 +185,22 @@ $(document).ready(function() {
 					anchor.appendChild(btn);
 					longHotel = item.longitude;
 					latHotel = item.latitude;
+					////////////////////mapbox////////////////////////
+					// mapboxgl.accessToken =
+					// 	"pk.eyJ1Ijoic2VhbnNtaXRoOTgiLCJhIjoiY2thbDFoMTlpMHEzODJ3bXd6ZWMyNGxiZCJ9.W8BME0MhxkGYNFfIzJEuxA";
+					// var mapHotel = new mapboxgl.Map({
+					// 	container: "hotelMap", // container id
+					// 	style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+					// 	center: [longHotel, latHotel], // starting position [lng, lat]
+					// 	zoom: 9 // starting zoom
+					// });
+					// var popup = new mapboxgl.Popup({ offset: 25 }).setText(hotelName);
+					// var marker = new mapboxgl.Marker()
+					// 	.setLngLat([longHotel, latHotel])
+					// 	.addTo(mapHotel)
+					// 	.setPopup(popup);
+
+					////////////////////////// mapbox end//////////////////////
 				}
 				var loop = data.data.forEach(iterate);
 
@@ -208,28 +228,42 @@ $(document).ready(function() {
 });
 $("document").ready(function() {
 	$(document).on("click", ".list-group-item", function() {
+		var li = $(this)
+			.siblings()
+			.css({
+				background: "#ffff",
+				color: "black"
+			});
+		$(this).css({
+			background: "#28a745",
+			color: "#ffff"
+		});
+
 		$("html,body").animate(
 			{
 				scrollTop: $("#hotelMap").offset().top
 			},
 			"slow"
 		);
-		console.log("clickefd");
 		var latitude = $(this).data("lat");
 		var longitude = $(this).data("long");
+		var nameHotel = $(this).data("name");
 		// console.log(lat);
 		// mapbox
 		mapboxgl.accessToken =
 			"pk.eyJ1Ijoic2VhbnNtaXRoOTgiLCJhIjoiY2thbDFoMTlpMHEzODJ3bXd6ZWMyNGxiZCJ9.W8BME0MhxkGYNFfIzJEuxA";
-		var mapHotel = new mapboxgl.Map({
+		var mapHotels = new mapboxgl.Map({
 			container: "hotelMap", // container id
 			style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
 			center: [longitude, latitude], // starting position [lng, lat]
 			zoom: 9 // starting zoom
 		});
+		var popup = new mapboxgl.Popup({ offset: 25 }).setText(nameHotel);
 		var marker = new mapboxgl.Marker()
 			.setLngLat([longitude, latitude])
-			.addTo(mapHotel);
+			.addTo(mapHotels)
+			.setPopup(popup);
+
 		// // mapbox end
 	});
 });
